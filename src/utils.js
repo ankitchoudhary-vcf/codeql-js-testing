@@ -1,17 +1,17 @@
 import { exec } from "child_process";
-// ----------------------------
-// BAD: command injection
-// codeql [js/command-injection]
-function runCommand(userInput) {
-  // Potential command injection vulnerability
-  exec(`ls ${userInput}`, (err, stdout) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(stdout);
-  });
-}
+// // ----------------------------
+// // BAD: command injection
+// // codeql [js/command-injection]
+// function runCommand(userInput) {
+//   // Potential command injection vulnerability
+//   exec(`ls ${userInput}`, (err, stdout) => {
+//     if (err) {
+//       console.error(err);
+//       return;
+//     }
+//     console.log(stdout);
+//   });
+// }
 
 // ----------------------------
 // BAD: SQL injection
@@ -49,4 +49,4 @@ async function safeQuery(userInput) {
   await db.query("SELECT * FROM users WHERE name = ?", [userInput]); // Safe parameterized query
 }
 
-export { add, runCommand, safeQuery, unsafeQuery };
+export { add, safeQuery, unsafeQuery };
