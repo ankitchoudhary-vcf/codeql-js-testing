@@ -49,4 +49,4 @@ async function safeQuery(userInput) {
   await db.query("SELECT * FROM users WHERE name = ?", [userInput]); // Safe parameterized query
 }
 
-export { add, runCommand, safeQuery, unsafeQuery };
+export { add, runCommand };
