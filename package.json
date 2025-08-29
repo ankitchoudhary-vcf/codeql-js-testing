@@ -1,0 +1,12 @@
+{
+  "name": "codeql-js-demo",
+  "version": "1.0.0",
+  "main": "src/utils.js",
+  "scripts": {
+    "start": "node src/utils.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
