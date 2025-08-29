@@ -1,6 +1,4 @@
 import { exec } from "child_process";
-import mysql from "mysql2/promise"; // Real database connection
-
 // ----------------------------
 // BAD: command injection
 // codeql [js/command-injection]
@@ -18,16 +16,14 @@ function runCommand(userInput) {
 // ----------------------------
 // BAD: SQL injection
 // codeql [js/sql-injection]
-async function unsafeQuery(userInput) {
-  // Realistic database connection
-  const db = await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "test",
-  });
+const mysql = {
+  query: (sql) => {
+    /* pretend this is SQL */
+  },
+};
 
-  // Vulnerable query: concatenating user input
-  await db.query("SELECT * FROM users WHERE name = '" + userInput + "'");
+function unsafeQuery(userInput) {
+  mysql.query("SELECT * FROM users WHERE name = '" + userInput + "'");
 }
 
 // // ----------------------------
